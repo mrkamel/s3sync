@@ -1,7 +1,7 @@
 
 # s3sync
 
-s3sync is low-memory, highly parallelizable (via prefixes) s3 client that
+s3sync is a low-memory, highly parallelizable (via prefixes) s3 client that
 syncs a bucket to a local filesystem.
 
 ## Setup
@@ -12,6 +12,8 @@ First, install bundler:
 ```
 $ gem install bundler
 ```
+
+Then, install s3sync's dependencies:
 
 ```
 $ cd /path/to/s3sync
