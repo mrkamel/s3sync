@@ -44,6 +44,10 @@ The most common way to use it is:
 $ s3sync --config config.yml --bucket BUCKET --prefix PREFIX --path /path/to/destination
 ```
 
+s3sync currently is a fetch only client, such that it will fetch all files matching the
+bucket and optional prefix unless the file already exists on the local filesystem having
+the same file size as on s3.
+
 # Example
 
 The strength of s3sync is that it works great when parallelized by starting it multiple
