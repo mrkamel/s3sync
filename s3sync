@@ -63,6 +63,12 @@ def s3sync(bucket, path, options = {})
     else
       puts "Skipping #{file}"
     end 
+
+    if options[:touch]
+      puts "Touching #{file}"
+
+      FileUtils.touch file
+    end
   end 
 end
 
@@ -97,5 +103,5 @@ raise "You did not specify a secret key" if options[:secret_key].nil?
 raise "You did not specify a bucket" if options[:bucket].nil?
 raise "You did not specify a path" if options[:path].nil?
 
-s3sync options[:bucket], options[:path], options.slice(:access_key, :secret_key, :prefix, :endpoint)
+s3sync options[:bucket], options[:path], options.slice(:access_key, :secret_key, :prefix, :endpoint, :touch)
 
