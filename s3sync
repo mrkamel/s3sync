@@ -2,7 +2,10 @@
 
 require "rubygems"
 require "fileutils"
-require "bundler/setup"
+require "bundler"
+
+FileUtils.cd(File.dirname(__FILE__)) { Bundler.setup }
+
 require "facets"
 require "optparse"
 require "aws/s3"
