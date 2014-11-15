@@ -60,7 +60,7 @@ def s3sync(bucket, path, options = {})
     if !File.exists?(file) || File.size(file) != object.size
       puts "Downloading #{object.key} -> #{file} [#{object.size} bytes]"
 
-      if value = Retry.task { object.value }
+      if value = Retry.task { AWS::S3::S3Object.value object.key, bucket }
         open(file, "wb") { |stream| stream.write value }
       end 
     else
