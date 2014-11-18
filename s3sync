@@ -29,6 +29,8 @@ module AWS
   module S3
     class Bucket
       def self.all_objects(name, options = {}) 
+        return enum_for(:all_objects, name, options) unless block_given?
+
         marker = nil 
 
         loop do
@@ -78,21 +80,10 @@ end
 options = {}
 
 option_parser = OptionParser.new do |parser|
-  parser.on "--config PATH" do |config|
-    options[:config] = config
-  end 
-
-  parser.on "--bucket BUCKET" do |bucket|
-    options[:bucket] = bucket
-  end 
-
-  parser.on "--prefix PREFIX" do |prefix|
-    options[:prefix] = prefix
-  end 
-
-  parser.on "--path PATH" do |path|
-    options[:path] = path
-  end 
+  parser.on("--config PATH") { |config| options[:config] = config }
+  parser.on("--bucket BUCKET") { |bucket| options[:bucket] = bucket }
+  parser.on("--prefix PREFIX") { |prefix| options[:prefix] = prefix }
+  parser.on("--path PATH") { |path| options[:path] = path }
 end
 
 option_parser.parse!
