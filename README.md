@@ -23,6 +23,7 @@ $ bundle
 Create a config file, like e.g. config.yml:
 
 ```
+endpoint: s3-eu-west-1.amazonaws.com
 access_key: YOUR ACCESS KEY
 secret_key: YOUR SECRET KEY
 ```
